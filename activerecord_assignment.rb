@@ -21,10 +21,12 @@ Track.all.map(&:milliseconds).sum # in milliseconds. For hours, divide by 3.6 mi
 
 # 3a) Find the highest price of any track that has the media type "MPEG audio file".
 
-
+Track.where(media_type_id: MediaType.find_by(name: 'MPEG audio file')).order(unit_price: :desc).limit(1).first.unit_price
+# => 0.9e0 # odd formatting, but equals $0.99
 
 # 3b) Find the name of the most expensive track that has the media type "MPEG audio file".
 
+Track.where(media_type_id: MediaType.find_by(name: 'MPEG audio file')).order(unit_price: :desc).limit(1).first.name
 
 
 # 4) Find the 2 oldest artists.
