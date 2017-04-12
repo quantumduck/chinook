@@ -6,15 +6,18 @@
 
 # 1a) Find the genre with the name "Hip Hop/Rap".
 
+Genre.find_by(name: 'Hip Hop/Rap')
 
 
 # 1b) Count how many tracks belong to the "Hip Hop/Rap" genre
 
-
+hhrid = Genre.find_by(name: 'Hip Hop/Rap').id
+Track.where(genre_id: hhrid).length
 
 # 2) Find the total amount of time required to listen to all the tracks in the database.
 
-
+Track.all.map(&:milliseconds).sum # in milliseconds. For hours, divide by 3.6 million
+# I just learned how to do this :)
 
 # 3a) Find the highest price of any track that has the media type "MPEG audio file".
 
